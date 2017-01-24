@@ -1,0 +1,2 @@
+class MyContact < ApplicationRecord
+end
