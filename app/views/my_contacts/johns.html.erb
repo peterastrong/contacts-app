@@ -1,14 +1,2 @@
 <h1>The Johns</h1>
 
-<% @contacts.each do |contact| %>
-<a href="/my_contacts/<%= contact.id %>">
-<p><%= contact.id %> </p>
-<p> <%= contact.full_name %> </p>
-<p> <%= contact.japan_number %>  </p>
-<p>Updated on: <%= contact.time_of_change %></p>
-<p>-------</p>
-</a>
-
-
-
-<% end %>

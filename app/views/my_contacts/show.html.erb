@@ -4,8 +4,13 @@
 
 <p>Email: <%= @contact.email %></p>
 
+<p>Latitude: <%= @contact.latitude %></p>
+<p>Longitude: <%= @contact.longitude %></p>
+<p>Address: <%= @contact.address %></p>
+<div>
 <%= link_to "Edit this contact", "/my_contacts/#{@contact.id}/edit", method: :get %>
-<p> </p>
+</div>
 <div>
 <%= link_to "Delete this contact.", "/my_contacts/#{@contact.id}", method: :delete %>
 </div>
+<div><%= link_to "Return to main list", "/my_contacts" %></div>

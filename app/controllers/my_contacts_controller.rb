@@ -10,9 +10,13 @@ class MyContactsController < ApplicationController
   end 
 
   def create
-    @contact = MyContact.new(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], phone_number: params[:phone_number], middle_name: params[:middle_name])
+    address = params[:input_address]
+    coordinates = Geocoder.coordinates(address)
+    latitude = coordinates[0]
+    longitude = coordinates[1]
+    @contact = MyContact.new(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], phone_number: params[:phone_number], middle_name: params[:middle_name], latitude: latitude, longitude: longitude)
     @contact.save
-    render "create.html.erb"
+    redirect_to "/my_contacts/#{@contact.id}"
   end
 
   def show
@@ -26,16 +30,20 @@ class MyContactsController < ApplicationController
   end
 
   def update
+    address = params[:input_address]
+    coordinates = Geocoder.coordinates(address)
+    latitude = coordinates[0]
+    longitude = coordinates[1]
     @contact = MyContact.find_by(id: params[:id])
-    @contact.assign_attributes(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], phone_number: params[:phone_number], middle_name: params[:middle_name])
+    @contact.assign_attributes(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], phone_number: params[:phone_number], middle_name: params[:middle_name], latitude: latitude, longitude: longitude)
     @contact.save
-    render "update.html.erb"
+    redirect_to "/my_contacts/#{@contact.id}"
   end
 
   def destroy
     @contact = MyContact.find_by(id: params[:id])
     @contact.destroy
-    render "destroy.html.erb"
+    redirect_to "/my_contacts"
   end
 
   def johns

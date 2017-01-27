@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   patch "/my_contacts/:id", to: "my_contacts#update"
   delete "/my_contacts/:id", to: "my_contacts#destroy"
 
-  get "my_contacts/all_Johns", to: "my_contacts#johns"
-
+  get "/my_contacts/all_Johns", to: "my_contacts#johns"
 
 end

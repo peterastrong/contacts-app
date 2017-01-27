@@ -13,6 +13,13 @@ class MyContact < ApplicationRecord
 
   def self.all_johns
     where(first_name: "John")
+    
   end 
+
+  def address
+    geo_localization = "#{latitude},#{longitude}"
+    query = Geocoder.search(geo_localization).first
+    query.address 
+  end
 
 end
