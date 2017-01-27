@@ -10,7 +10,7 @@ class MyContactsController < ApplicationController
   end 
 
   def create
-    @contact = MyContact.new(first_name: params[:first_name])
+    @contact = MyContact.new(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], phone_number: params[:phone_number], middle_name: params[:middle_name])
     @contact.save
     render "create.html.erb"
   end
@@ -27,7 +27,7 @@ class MyContactsController < ApplicationController
 
   def update
     @contact = MyContact.find_by(id: params[:id])
-    @contact.assign_attributes(first_name: params[:first_name], last_name: params[:last_name], email: params[:email])
+    @contact.assign_attributes(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], phone_number: params[:phone_number], middle_name: params[:middle_name])
     @contact.save
     render "update.html.erb"
   end
@@ -38,11 +38,9 @@ class MyContactsController < ApplicationController
     render "destroy.html.erb"
   end
 
-  
+  def johns
+    @contacts = MyContact.all_johns
+    render "johns.html.erb"
+  end 
 
-  def new_contact_result_method
-    @contact = MyContact.new(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], home_address: params[:addres])
-    @contact.save
-    render "new_contact_result_view.html.erb"
-  end
 end
