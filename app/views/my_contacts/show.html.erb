@@ -1,12 +1,18 @@
 <h1>This contact is:</h1>
 
 <p> Name: <%= @contact.full_name %></p>
-
 <p>Email: <%= @contact.email %></p>
-
-<p>Latitude: <%= @contact.latitude %></p>
-<p>Longitude: <%= @contact.longitude %></p>
+<p>Phone: <%= @contact.phone_number %></p>
 <p>Address: <%= @contact.address %></p>
+<p>Bio: <%= @contact.bio %></p>
+<p>Groups:</p>
+<ul>
+  <% @contact.groups.each do |group| %>
+    <li><%= group.name.capitalize %></li> 
+  <% end %>
+</ul>
+
+
 <div>
 <%= link_to "Edit this contact", "/my_contacts/#{@contact.id}/edit", method: :get %>
 </div>

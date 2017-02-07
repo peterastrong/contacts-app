@@ -1,4 +1,8 @@
 class MyContact < ApplicationRecord
+  belongs_to :user
+  has_many :contact_groups
+  has_many :groups, through: :contact_groups
+
   def time_of_change
     updated_at.strftime("%A, %b %d")
   end 

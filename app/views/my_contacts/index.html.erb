@@ -1,16 +1,18 @@
-<h1>Here are all my contacts:</h1>
 
-<% @contacts.each do |contact| %>
-<a href="/my_contacts/<%= contact.id %>">
-<p><%= contact.id %> </p>
-<p> <%= contact.full_name %> </p>
-<p><%= contact.bio %></p>
-<p> <%= contact.japan_number %>  </p>
-<p>Updated on: <%= contact.time_of_change %></p>
-<p>Address: <%= contact.address %></p>
-<p>-------</p>
-</a>
+  <h1>Here are all my contacts:</h1>
 
-
-
-<% end %>
+  
+   
+      <% @contacts.each do |contact| %>
+      <a href="/my_contacts/<%= contact.id %>">
+      <p><%= contact.id %> </p>
+      <p> <%= contact.full_name %> </p>
+      <p><%= contact.email %></p>
+      <p>Bio: <%= contact.bio %></p>
+      <p> <%= contact.japan_number %>  </p>
+      <p>Updated on: <%= contact.time_of_change %></p>
+      <p>Address: <%= contact.address %></p>
+      <p>-------</p>
+      </a>
+      <% end %>
+   
